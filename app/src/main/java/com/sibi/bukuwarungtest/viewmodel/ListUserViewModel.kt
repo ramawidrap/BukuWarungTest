@@ -11,4 +11,8 @@ class ListUserViewModel @Inject constructor(private val userRepository: UserRepo
     fun getUsers() : LiveData<PagedList<User>> {
         return userRepository.pagedListLiveData
     }
+
+    fun getTotalItems() : LiveData<Int> {
+        return userRepository.total_items
+    }
 }

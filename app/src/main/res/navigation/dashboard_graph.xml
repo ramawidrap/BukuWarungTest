@@ -18,5 +18,12 @@
         android:id="@+id/detailUserFragment"
         android:name="com.sibi.bukuwarungtest.ui.DetailUserFragment"
         android:label="fragment_detail_user"
-        tools:layout="@layout/fragment_detail_user" />
+        tools:layout="@layout/fragment_detail_user" >
+        <argument
+            android:name="user"
+            app:argType="com.sibi.bukuwarungtest.model.User" />
+        <action
+            android:id="@+id/action_detailUserFragment_to_dashboardFragment2"
+            app:popUpTo="@id/dashboardFragment2" />
+    </fragment>
 </navigation>
