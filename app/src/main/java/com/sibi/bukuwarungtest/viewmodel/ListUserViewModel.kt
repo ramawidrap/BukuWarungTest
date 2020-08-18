@@ -12,7 +12,4 @@ class ListUserViewModel @Inject constructor(private val userRepository: UserRepo
         return userRepository.pagedListLiveData
     }
 
-    fun getTotalItems() : LiveData<Int> {
-        return userRepository.total_items
-    }
 }
