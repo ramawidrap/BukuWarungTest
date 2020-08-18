@@ -8,7 +8,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class ViewModelModule {
+abstract class ViewModelFactoryModule {
 
     @Binds
     abstract fun bindViewModelFactory (viewModelFactory: ViewModelFactory) : ViewModelProvider.Factory

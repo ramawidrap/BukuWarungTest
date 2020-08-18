@@ -2,13 +2,32 @@ package com.sibi.bukuwarungtest.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import java.lang.Exception
+import java.lang.IllegalArgumentException
+import java.lang.RuntimeException
 import javax.inject.Inject
 import javax.inject.Provider
 
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactory @Inject constructor(private val userViewModel: Provider<ListUserViewModel>) : ViewModelProvider.Factory {
+class ViewModelFactory @Inject constructor(private val creators: Map<Class <out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return userViewModel.get() as T
+        var creator : Provider<ViewModel>? = creators[modelClass]
+
+        if(creator == null) {
+            for((key,value) in creators) {
+                if(modelClass.isAssignableFrom(key)){
+                    creator = value
+                    break
+                }
+            }
+        }
+        if(creator == null) throw IllegalArgumentException("Unknown Model Class")
+        try {
+            return creator.get() as T
+        }
+        catch (e: Exception) {
+            throw RuntimeException(e)
+        }
     }
 
 }

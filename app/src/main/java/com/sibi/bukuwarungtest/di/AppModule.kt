@@ -1,7 +1,10 @@
 package com.sibi.bukuwarungtest.di
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
+import com.google.gson.Gson
 import com.sibi.bukuwarungtest.source.local.AppDatabase
 import com.sibi.bukuwarungtest.source.local.UserDao
 import com.sibi.bukuwarungtest.source.network.UserService
@@ -49,6 +52,18 @@ class AppModule {
     @Provides
     fun provideUserService(retrofit: Retrofit) : UserService {
         return retrofit.create(UserService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideSharedPref(app : Application) : SharedPreferences {
+        return app.getSharedPreferences("profile", Context.MODE_PRIVATE)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGson() : Gson {
+        return Gson()
     }
 
 }

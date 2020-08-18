@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.sibi.bukuwarungtest"
-        minSdkVersion 26
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -35,7 +35,7 @@ dependencies {
     def room_version = '2.2.5'
     def lifecycle_version = "2.2.0"
     def nav_version = "2.3.0"
-
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
