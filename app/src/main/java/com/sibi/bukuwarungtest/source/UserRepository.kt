@@ -18,7 +18,6 @@ class UserRepository @Inject constructor(
     executor: Executor
 ) {
     private var page = 1
-    val total_items = MutableLiveData<Int>()
     private val boundaryCallback = object : PagedList.BoundaryCallback<User>() {
         @SuppressLint("CheckResult")
         override fun onZeroItemsLoaded() {
